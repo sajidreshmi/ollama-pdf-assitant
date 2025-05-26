@@ -98,7 +98,7 @@ def load_vector_db(_uploaded_file_name, uploaded_file_content):
         vector_db = Chroma.from_documents(
             documents=chunks,
             embedding=embedding,
-            collection_name=VECTOR_STORE_NAME + "_" + _uploaded_file_name.replace(".", "_"), # Unique collection name
+            collection_name=VECTOR_STORE_NAME + "_" + _uploaded_file_name.replace(".", "_").replace(" ", "_"), # Unique collection name
             persist_directory=PERSIST_DIRECTORY,
         )
         # vector_db.persist() # Persist is implicitly handled by Chroma usually, but can be explicit.
